@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Connect.gd" type="Script" id=1]
+
+[node name="Connect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_left = 404.0
+margin_top = 109.0
+margin_right = 512.0
+margin_bottom = 367.0
+custom_constants/separation = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBox"]
+margin_right = 108.0
+margin_bottom = 14.0
+text = "setup"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+margin_top = 114.0
+margin_right = 108.0
+margin_bottom = 138.0
+
+[node name="NameLabel" type="Label" parent="VBox/HBox"]
+margin_top = 5.0
+margin_right = 46.0
+margin_bottom = 19.0
+text = "Name: "
+
+[node name="LineEdit" type="LineEdit" parent="VBox/HBox"]
+margin_left = 50.0
+margin_right = 108.0
+margin_bottom = 24.0
+text = "Player"
+
+[node name="JoinButton" type="Button" parent="VBox"]
+margin_left = 36.0
+margin_top = 238.0
+margin_right = 71.0
+margin_bottom = 258.0
+size_flags_horizontal = 4
+text = "Join"
+
+[node name="Status" type="Label" parent="VBox"]
+margin_top = 358.0
+margin_right = 108.0
+margin_bottom = 372.0
+[connection signal="pressed" from="VBox/JoinButton" to="." method="_on_JoinButton_pressed"]

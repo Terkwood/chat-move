@@ -15,4 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-run/main_scene="res://Main.tscn"
+config/name="ChatMove Client"
+run/main_scene="res://Connect.tscn"
+
+[autoload]
+
+net="*res://net.gd"

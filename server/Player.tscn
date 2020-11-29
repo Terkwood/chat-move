@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -11,3 +12,14 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="NameLabel" type="Label" parent="."]
+margin_left = -31.0
+margin_top = 31.0
+margin_right = 30.0
+margin_bottom = 45.0
+text = "Player Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}

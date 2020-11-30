@@ -6,7 +6,6 @@ func _ready():
 	net.connect("connection_failed", self, "_on_connection_failed")
 	net.connect("connection_succeeded", self, "_on_connection_success")
 	net.connect("server_disconnected", self, "_on_server_disconnect")
-	net.connect("players_updated", self, "update_player_names")
 
 	$VBox/JoinButton.disabled = true
 	
@@ -35,4 +34,3 @@ func _on_connection_failed():
 func _on_server_disconnect():
 	$VBox/JoinButton.disabled = true
 	status.text = "Server disconnected. Trying to reconnect..."
-

@@ -21,3 +21,4 @@ run/main_scene="res://Connect.tscn"
 [autoload]
 
 net="*res://net.gd"
+Chat="*res://Chat.tscn"

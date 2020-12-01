@@ -15,4 +15,5 @@ func send_message():
 	rpc("receive_message", id, msg)
 
 sync func receive_message(id, msg):
-	ChatDisplay.text += str(id) + ": " + msg + "\n"
+	ChatDisplay.text += "\n" + str(id) + ": " + msg
+	ChatDisplay.set_v_scroll(100.0)

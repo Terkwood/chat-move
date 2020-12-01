@@ -21,3 +21,4 @@ run/main_scene="res://World.tscn"
 [autoload]
 
 net="*res://net.gd"
+PlayerNames="*res://player_names.gd"

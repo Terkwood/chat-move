@@ -9,7 +9,7 @@ signal connection_succeeded()
 signal server_disconnected()
 
 var my_name = "Someone"
-var player_names_by_id = {}
+
 
 func _ready():
 	get_tree().connect("connected_to_server", self, "_connected_ok")
@@ -29,7 +29,7 @@ func _connected_ok():
 
 # Callback from SceneTree
 func _server_disconnected():
-	player_names_by_id.clear()
+	PlayerNames.clear()
 	get_node("/root/World").queue_free()
 	get_node("/root/Connect").show()
 	emit_signal("server_disconnected")
@@ -46,16 +46,12 @@ func _connected_fail():
 	connect_to_server()
 
 puppet func register_player(id, new_player_data):
-	player_names_by_id[id] = new_player_data
+	PlayerNames.set(id, new_player_data)
 
 
 puppet func unregister_player(id):
-	player_names_by_id.erase(id)
+	PlayerNames.erase(id)
 
-
-# Returns list of player names
-func get_player_names():
-	return player_names_by_id.values()
 
 puppet func pre_start_game():
 	# Register ourselves with the server

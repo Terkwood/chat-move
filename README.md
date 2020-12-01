@@ -1,8 +1,10 @@
 # Multiplayer Chat/Move PoC
 
-The goal is to provide a multiplayer
-2D world with chat. Each player must
-have the ability to move around.
+These applications constitute a prototype for a multiplayer, 2D world with chat. 
+We use a client/server approach, such that the server could be hosted on a cloud
+provider and run in headless mode.
+
+Each player has the ability to move around, in addition to being able to chat.
 
 ## Source Projects
 

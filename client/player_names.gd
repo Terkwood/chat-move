@@ -13,7 +13,3 @@ func set(id, player_name):
 
 func clear():
 	names_by_id.clear()
-
-func _ready():
-	pass # Replace with function body.
-

@@ -2,6 +2,12 @@ extends Node
 
 var names_by_id = {}
 
+func list_ids():
+	return names_by_id
+
+func has(id):
+	return names_by_id.has(id)
+
 func get(id):
 	return names_by_id[id]
 

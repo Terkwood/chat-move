@@ -8,7 +8,7 @@ puppet var puppet_velocity = Vector2()
 
 func _ready():
 	var player_id = get_network_master()
-	$NameLabel.text = net.player_names_by_id[player_id]
+	$NameLabel.text = PlayerNames.get(player_id)
 	puppet_position = position
 	
 func _process(delta):

@@ -3,8 +3,6 @@ extends Node
 const DEFAULT_PORT = 34543
 const MAX_PLAYERS = 12
 
-var player_names_by_id = {}
-
 onready var Chat = load("res://Chat.tscn")
 
 func _ready():
@@ -29,7 +27,7 @@ func _player_connected(_id):
 
 # Callback from SceneTree, called when client disconnects
 func _player_disconnected(id):
-	if player_names_by_id.has(id):
+	if PlayerNames.has(id):
 		rpc("unregister_player", id)
 		get_node("/root/World").rpc("remove_player", id)
 	
@@ -39,21 +37,21 @@ func _player_disconnected(id):
 remote func register_player(new_player_name):
 	var caller_id = get_tree().get_rpc_sender_id()
 	
-	player_names_by_id[caller_id] = new_player_name
+	PlayerNames.set(caller_id, new_player_name)
 	
 	# send each player to new player
-	for pid in player_names_by_id:
-		rpc_id(caller_id, "register_player", pid, player_names_by_id[pid])
+	for pid in PlayerNames.list_ids():
+		rpc_id(caller_id, "register_player", pid, PlayerNames.get(pid))
 	
 	# send new player to each player
-	rpc("register_player", caller_id, player_names_by_id[caller_id])
+	rpc("register_player", caller_id, PlayerNames.get(caller_id))
 	# NOTE: this means new player's register gets called twice,
 	#       but fine as same info sent both times
 	
 	print("Client ", caller_id, " registered as ", new_player_name)
 
 puppetsync func unregister_player(id):
-	player_names_by_id.erase(id)
+	PlayerNames.erase(id)
 	print("Client ", id, " was unregistered")
 
 remote func populate_world():

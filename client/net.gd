@@ -64,7 +64,9 @@ puppet func pre_start_game():
 	# Load world
 	get_node("/root/Connect").hide()
 	var world = load("res://World.tscn").instance()
+	var chat = load("res://Chat.tscn").instance()
 	get_tree().get_root().add_child(world)
+	get_tree().get_root().add_child(chat)
 	
-	# Tell Server we ready to roll
+	# call to server
 	rpc_id(1, "populate_world")

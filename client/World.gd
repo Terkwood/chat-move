@@ -14,3 +14,4 @@ puppet func spawn_player(spawn_pos, id):
 
 puppet func remove_player(id):
 	$Players.get_node(String(id)).queue_free()
+

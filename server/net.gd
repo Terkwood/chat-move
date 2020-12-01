@@ -5,16 +5,22 @@ const MAX_PLAYERS = 12
 
 var player_names_by_id = {}
 
+onready var Chat = load("res://Chat.tscn")
+
 func _ready():
 	get_tree().connect("network_peer_connected", self, "_player_connected")
 	get_tree().connect("network_peer_disconnected", self,"_player_disconnected")
 	
 	create_server()
+	create_chat()
 
 func create_server():
 	var host = NetworkedMultiplayerENet.new()
 	host.create_server(DEFAULT_PORT, MAX_PLAYERS)
 	get_tree().set_network_peer(host)
+ 
+func create_chat():
+	get_tree().get_root().call_deferred("add_child", Chat.instance())
 
 # Callback from SceneTree, called when client connects
 func _player_connected(_id):

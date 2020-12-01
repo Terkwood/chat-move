@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Chat.gd" type="Script" id=1]
+
+[node name="Chat" type="Panel"]
+margin_left = 32.0
+margin_top = 406.0
+margin_right = 993.0
+margin_bottom = 586.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Display" type="TextEdit" parent="."]
+margin_right = 945.0
+margin_bottom = 148.0
+readonly = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Input" type="LineEdit" parent="."]
+margin_top = 150.0
+margin_right = 944.0
+margin_bottom = 176.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

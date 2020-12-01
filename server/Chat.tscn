@@ -16,14 +16,8 @@ __meta__ = {
 margin_right = 945.0
 margin_bottom = 148.0
 readonly = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Input" type="LineEdit" parent="."]
 margin_top = 150.0
 margin_right = 944.0
 margin_bottom = 176.0
-__meta__ = {
-"_edit_use_anchors_": false
-}

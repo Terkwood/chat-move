@@ -3,7 +3,7 @@
 ![multiplayer chat with physics](https://gist.githubusercontent.com/Terkwood/b91e15774b00d3ba45d5b06b86a8e7a7/raw/dcdb9bab3f0b7619580a3f2573de2988aa38288a/chat-move.gif)
 
 These applications constitute a prototype for a multiplayer, 2D world with chat. 
-We use a client/server approach, such that the server could be hosted on a cloud
+We use a client/server approach, such that the server can be hosted on a cloud
 provider and run in headless mode.
 
 Each player has the ability to move around, in addition to being able to chat.

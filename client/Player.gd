@@ -15,7 +15,7 @@ func _ready():
 		puppet_position = position
 
 
-func _process(delta):
+func _physics_process(delta):
 	if is_network_master():
 		var move_dir = Vector2()
 		
@@ -46,3 +46,4 @@ func _process(delta):
 		# we will keep jumping back until controlling player sends next position update.
 		# Therefore, we update puppet_pos to minimize jitter problems
 		puppet_position = position
+	

@@ -11,7 +11,9 @@ func _ready():
 	$NameLabel.text = PlayerNames.get(player_id)
 	puppet_position = position
 	
-func _process(delta):
+# clients are computing their position using
+# _physics_process + move_and_slide()
+func _physics_process(delta):
 	position = puppet_position
 	velocity = puppet_velocity
 	position += velocity * delta

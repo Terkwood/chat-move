@@ -1,5 +1,7 @@
 # Multiplayer Chat/Move PoC
 
+![demo vid](https://gist.github.com/Terkwood/b91e15774b00d3ba45d5b06b86a8e7a7/raw/8bcd812d3c2f39bf3385bbba6f4cba5f213c4bfb/chat-move.mp4)
+
 These applications constitute a prototype for a multiplayer, 2D world with chat. 
 We use a client/server approach, such that the server could be hosted on a cloud
 provider and run in headless mode.

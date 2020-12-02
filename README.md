@@ -1,6 +1,6 @@
 # Multiplayer Chat/Move PoC
 
-![demo vid](https://gist.github.com/Terkwood/b91e15774b00d3ba45d5b06b86a8e7a7/raw/8bcd812d3c2f39bf3385bbba6f4cba5f213c4bfb/chat-move.mp4)
+![multiplayer chat with physics](https://gist.githubusercontent.com/Terkwood/b91e15774b00d3ba45d5b06b86a8e7a7/raw/92aba0045b1cdeb7cc1b6b86d5560825b5d9bb63/chat-move.gif)
 
 These applications constitute a prototype for a multiplayer, 2D world with chat. 
 We use a client/server approach, such that the server could be hosted on a cloud

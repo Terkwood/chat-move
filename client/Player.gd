@@ -38,7 +38,7 @@ func _process(delta):
 		position = puppet_position
 		velocity = puppet_velocity
 	
-	position += velocity * delta
+	move_and_slide(velocity, Vector2(0,0))
 	
 	if not is_network_master():
 		# It may happen that many frames pass before the controlling player sends

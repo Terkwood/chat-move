@@ -1,6 +1,6 @@
-# NEXT: v0.1.1
+# v0.1.1
 
-- Calculate `move_and_slide` in `_physics_process` #6
+Calculate `move_and_slide` in `_physics_process` #6
 
 # v0.1.0
 

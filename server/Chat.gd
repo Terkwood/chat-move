@@ -6,7 +6,16 @@ onready var ChatInput = $Input
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ENTER:
-			send_message()
+			if ChatInput.has_focus():
+				if ChatInput.text.strip_edges() == "":
+					ChatInput.release_focus()
+				else:
+					send_message()
+			else:
+				ChatInput.grab_focus()
+		
+		if event.pressed and event.scancode == KEY_ESCAPE and ChatInput.has_focus():
+			ChatInput.release_focus()
 
 func send_message():
 	var msg = ChatInput.text

@@ -10,10 +10,9 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ENTER:
 			if ChatInput.has_focus():
-				if ChatInput.text.strip_edges() == "":
-					_release_focus()					
-				else:
-					_send_message()
+				if ChatInput.text.strip_edges() != "":
+					_send_message()					
+				_release_focus()
 			else:
 				ChatInput.grab_focus()
 				emit_signal("chat_focus_grabbed")

@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-signal chat_focus_grabbed
-signal chat_focus_released
 
 const SPEED = 300
 const chat_path = NodePath("/root/Chat")
@@ -64,6 +62,8 @@ func _physics_process(delta):
 	
 func _on_chat_focus_grabbed():
 	_allow_input = false
+	rset_unreliable("puppet_position", position)
+	rset_unreliable("puppet_velocity", Vector2.ZERO)
 	
 func _on_chat_focus_released():
 	_allow_input = true

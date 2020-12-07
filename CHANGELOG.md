@@ -1,6 +1,6 @@
-# NEXT: v0.2.0
+# v0.2.0
 
-If necessary, ChatInput now grabs focus when you press enter.  (#7)
+If necessary, ChatInput now grabs focus when you press enter.  (#7, #8, #9)
 
 # v0.1.1
 

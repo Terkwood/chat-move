@@ -1,12 +1,25 @@
 extends KinematicBody2D
 
+
 const SPEED = 300
+const chat_path = NodePath("/root/Chat")
+
 var velocity = Vector2()
 
 puppet var puppet_position
 puppet var puppet_velocity = Vector2()
 
+# Disallow input when focused in chat
+var _allow_input = true
+
+onready var Chat = get_node(chat_path)
+
+
 func _ready():
+	if Chat != null:
+		Chat.connect("chat_focus_grabbed", self, "_on_chat_focus_grabbed")
+		Chat.connect("chat_focus_released", self, "_on_chat_focus_released")
+	
 	if is_network_master():
 		$NameLabel.text = "You"
 	else:
@@ -16,7 +29,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	if is_network_master():
+	if _allow_input && is_network_master():
 		var move_dir = Vector2()
 		
 		if Input.is_action_pressed("ui_up"):
@@ -47,3 +60,10 @@ func _physics_process(delta):
 		# Therefore, we update puppet_pos to minimize jitter problems
 		puppet_position = position
 	
+func _on_chat_focus_grabbed():
+	_allow_input = false
+	rset_unreliable("puppet_position", position)
+	rset_unreliable("puppet_velocity", Vector2.ZERO)
+	
+func _on_chat_focus_released():
+	_allow_input = true

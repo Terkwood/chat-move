@@ -12,16 +12,17 @@ set -e      # bail on error
 : {$GCP_PROJECT:Requires GCP_PROJECT}
 : {$GCP_NETWORK:Requires GCP_NETWORK}
 : {$GCP_ZONE:Requires GCP_ZONE}
-: {$SERVICE_USER:Requires SERVICE_USER (name)}
+: {$SERVICE_USER:Requires SERVICE_USER name}
 : {$INSTANCE_NAME:Requires INSTANCE_NAME}
 
+# see https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-gcp/
+IMAGE_PROJECT=fedora-coreos-cloud 
 IMAGE_FAMILY=fedora-coreos-stable 
-IMAGE_NAME=fedora-coreos-32-20201104-3-0-gcp-x86-64 
 
 gcloud compute instances create $INSTANCE_NAME \
   --project $GCP_PROJECT \
   --image-family $IMAGE_FAMILY \
-  --image-project $IMAGE_NAME \
+  --image-project $IMAGE_PROJECT \
   --network $GCP_NETWORK \
   --zone $GCP_ZONE \
   --service-account=$SERVICE_USER@$GCP_PROJECT.iam.gserviceaccount.com \

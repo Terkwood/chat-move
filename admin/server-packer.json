@@ -1,0 +1,31 @@
+{
+    "variables": {
+      "region": "",
+      "zone": "",
+      "project_id": ""
+    },
+    "builders": [
+      {
+        "type": "googlecompute",
+        "project_id": "{{user `project_id`}}",
+        "source_image_family": "fedora-coreos-stable",
+        "region": "{{user `region`}}",
+        "zone": "{{user `zone`}}",
+        "image_description": "ChatMove Server Packer",
+        "image_name": "chatmove-server-packer",
+        "disk_size": 12,
+        "disk_type": "pd-ssd",
+        "ssh_username": "core"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": [
+          "sleep 10",
+          "uname -a",
+          "uptime"
+        ]
+      }
+    ]
+  }

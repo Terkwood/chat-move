@@ -8,7 +8,7 @@
       {
         "type": "googlecompute",
         "project_id": "{{user `project_id`}}",
-        "source_image_family": "fedora-coreos-stable",
+        "source_image_family": "coreos-stable",
         "region": "{{user `region`}}",
         "zone": "{{user `zone`}}",
         "image_description": "ChatMove Server",

@@ -1,0 +1,11 @@
+# source: https://github.com/godotengine/build-containers/blob/master/Dockerfile.base
+FROM fedora:32
+
+WORKDIR /root
+
+RUN dnf -y upgrade --setopt=install_weak_deps=False && \
+    dnf -y install --setopt=install_weak_deps=False \
+    bash bzip2 curl git make nano patch pkgconfig python-unversioned-command python3-pip unzip which xz && \
+    pip install scons==4.0.1
+
+CMD /bin/bash

@@ -28,8 +28,11 @@ RUN chmod 755 ${BIN_NAME}
 
 COPY target/${BIN_NAME}.pck .
 
+RUN ls -lR
+
 ENV PATH=/opt/chat-move:$PATH
 
-RUN ls -lR
+
+RUN whoami
 
 CMD "./${BIN_NAME}"

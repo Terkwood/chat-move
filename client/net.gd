@@ -1,6 +1,7 @@
 extends Node
 
-const ip = "127.0.0.1"
+const docker_ip = "0.0.0.0"
+const local_ip = "127.0.0.1"
 const DEFAULT_PORT = 34543
 
 # for GUI
@@ -20,7 +21,7 @@ func _ready():
 
 func connect_to_server():
 	var host = NetworkedMultiplayerENet.new()
-	host.create_client(ip, DEFAULT_PORT)
+	host.create_client(docker_ip, DEFAULT_PORT)
 	get_tree().set_network_peer(host)
 
 # Callback from SceneTree

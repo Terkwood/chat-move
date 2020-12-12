@@ -3,4 +3,5 @@ services:
   server:
     build: server/.
     ports:
-      - "34543:34543"
+      - "34543:34543/tcp"
+      - "34543:34543/udp"

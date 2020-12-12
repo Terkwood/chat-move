@@ -1,10 +1,10 @@
 #!/bin/bash
 
 ### adapted from https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-gcp/
+### requires a firewall policy to be created with the target tag "chat-move"
+
 
 set -e
-
-: {$GCP_ZONE:Requires GCP_ZONE}
 
 STREAM='stable'
 INSTANCE_NAME='chat-move-server'
@@ -16,5 +16,5 @@ IMAGE_FAMILY=fedora-coreos-stable
 gcloud compute instances create $INSTANCE_NAME \
   --image-family $IMAGE_FAMILY \
   --image-project $IMAGE_PROJECT \
-  --zone $GCP_ZONE \
-  --machine-type f1-micro
+  --machine-type f1-micro \
+  --tags chat-move

@@ -1,8 +1,7 @@
 #!/bin/bash
 
 ###
-### one time script to help create the necessary service user
-### to operate the packer build process
+### one time script to create service account 
 ### see also: https://www.packer.io/docs/builders/googlecompute.html#running-on-google-cloud
 ###
 

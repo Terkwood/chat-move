@@ -1,3 +1,4 @@
 # GCP administration
 
-These scripts draw from instructions for [packer config](https://www.packer.io/docs/builders/googlecompute.html#running-on-google-cloud).
+Right now it's just a [script](./launch.sh) to launch a Fedora CoreOS instance
+on Google Compute Engine.

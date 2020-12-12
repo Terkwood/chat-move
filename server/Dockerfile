@@ -8,4 +8,14 @@ RUN dnf -y upgrade --setopt=install_weak_deps=False && \
     bash bzip2 curl git make nano patch pkgconfig python-unversioned-command python3-pip unzip which xz && \
     pip install scons==4.0.1
 
-CMD /bin/bash
+RUN git clone https://github.com/godotengine/godot
+
+WORKDIR /root/godot
+
+RUN scons -j8 platform=server tools=yes target=release_debug
+
+WORKDIR /chat-server
+
+COPY target/. .
+
+CMD ["tail", "-f", "/dev/null"]

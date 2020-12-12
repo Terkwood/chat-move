@@ -3,6 +3,7 @@
 ###
 ### one time script to help create the necessary service user
 ### to operate the packer build process
+### see also: https://www.packer.io/docs/builders/googlecompute.html#running-on-google-cloud
 ###
 
 set -e  # bail on error

@@ -7,6 +7,7 @@ It requires a firewall policy to be created with the target tag "chat-move".
 
 ```sh
 # e.g.
+gcloud config set compute/region us-east1
 gcloud config set compute/zone us-east1-a
 sh launch.sh
 ```

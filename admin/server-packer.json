@@ -11,11 +11,12 @@
         "source_image_family": "fedora-coreos-stable",
         "region": "{{user `region`}}",
         "zone": "{{user `zone`}}",
-        "image_description": "ChatMove Server Packer",
-        "image_name": "chatmove-server-packer",
+        "image_description": "ChatMove Server",
+        "image_name": "chatmove-server",
         "disk_size": 12,
         "disk_type": "pd-ssd",
-        "ssh_username": "core"
+        "ssh_username": "core",
+        "tags": "packer"
       }
     ],
     "provisioners": [

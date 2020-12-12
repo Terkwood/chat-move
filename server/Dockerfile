@@ -1,21 +1,35 @@
-# source: https://github.com/godotengine/build-containers/blob/master/Dockerfile.base
-FROM fedora:32
+FROM debian:stable-slim
 
-WORKDIR /root
+# these can probably be trimmed up:
+#       autoconf automake cmake
+RUN apt-get -y update && \
+    apt-get -y install --no-install-recommends \
+    autoconf automake bzip2 cmake curl gettext git libtool xz-utils \
+    libudev-dev libx11-dev libxcursor-dev libxrandr-dev libasound2-dev libpulse-dev \
+    libgl1-mesa-dev libglu1-mesa-dev libxi-dev libxinerama-dev yasm
 
-RUN dnf -y upgrade --setopt=install_weak_deps=False && \
-    dnf -y install --setopt=install_weak_deps=False \
-    bash bzip2 curl git make nano patch pkgconfig python-unversioned-command python3-pip unzip which xz && \
-    pip install scons==4.0.1
+RUN apt-get -y install wget unzip
 
-RUN git clone https://github.com/godotengine/godot
+WORKDIR /opt/chat-move
 
-WORKDIR /root/godot
+ENV GODOT_VERSION=3.2.3
 
-RUN scons -j8 platform=server tools=yes target=release_debug
+RUN wget https://downloads.tuxfamily.org/godotengine/3.2.3/Godot_v${GODOT_VERSION}-stable_linux_server.64.zip
 
-WORKDIR /chat-server
+RUN unzip *.zip
 
-COPY target/. .
+RUN rm *.zip
 
-CMD ["tail", "-f", "/dev/null"]
+ENV BIN_NAME=chat-move-server
+
+RUN mv Godot_v${GODOT_VERSION}-stable_linux_server.64 ${BIN_NAME}
+
+RUN chmod 755 ${BIN_NAME}
+
+COPY target/${BIN_NAME}.pck .
+
+ENV PATH=/opt/chat-move:$PATH
+
+RUN ls -lR
+
+CMD "./${BIN_NAME}"

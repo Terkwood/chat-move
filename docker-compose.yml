@@ -1,4 +1,6 @@
 version: "3.3"
 services:
-  chat-server:
+  server:
     build: server/.
+    ports:
+      - "34543:34543"

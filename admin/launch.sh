@@ -15,4 +15,4 @@ gcloud compute instances create $INSTANCE_NAME \
   --image-family $IMAGE_FAMILY \
   --image-project $IMAGE_PROJECT \
   --machine-type f1-micro \
-  --tags chat-move
+  --tags chat-move # CAUTION: the firewall policies for egress and ingress need to be tagged with "chat-move"

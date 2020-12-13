@@ -1,9 +1,10 @@
 # GCP administration
 
-Right now it's just a [script](./launch.sh) to launch a Fedora CoreOS instance
-on Google Compute Engine.
+Various scripts to manage the server.
 
-It requires a [firewall policy](https://console.cloud.google.com/networking/firewalls/list) to be created with the target tag "chat-move".
+This configuration requires [firewall policies](https://console.cloud.google.com/networking/firewalls/list) for _both ingress and egress_ with the target tag `chat-move`.
+
+You should also set a default region and zone before running any of this.
 
 ```sh
 # e.g.

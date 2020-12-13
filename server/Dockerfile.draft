@@ -1,0 +1,49 @@
+FROM debian:stable-slim
+
+# these can probably be trimmed up:
+#       autoconf automake cmake
+RUN apt-get -y update && \
+    apt-get -y install --no-install-recommends \
+    autoconf automake bzip2 cmake curl gettext git libtool xz-utils \
+    libudev-dev libx11-dev libxcursor-dev libxrandr-dev libasound2-dev libpulse-dev \
+    libgl1-mesa-dev libglu1-mesa-dev libxi-dev libxinerama-dev yasm
+
+RUN apt-get -y install wget unzip
+
+WORKDIR /opt/chat-move
+
+ENV GODOT_VERSION=3.2.3
+
+RUN wget https://downloads.tuxfamily.org/godotengine/3.2.3/Godot_v${GODOT_VERSION}-stable_linux_server.64.zip
+
+RUN unzip *.zip
+
+RUN rm *.zip
+
+ENV PROJECT=chat-move-server
+
+RUN chmod 755 Godot_v${GODOT_VERSION}-stable_linux_server.64
+
+COPY target/${PROJECT}.pck .
+COPY target/${PROJECT}.x86_64 .
+
+RUN chmod 755 ${PROJECT}.x86_64
+
+RUN ls -lR
+RUN ls -ld .
+
+ENV PATH=/opt/chat-move:$PATH
+
+RUN whoami
+
+RUN ls -ld .
+
+RUN ln -s Godot_v${GODOT_VERSION}-stable_linux_server.64 godot 
+RUN ln -s ${PROJECT}.x86_64 projbin 
+RUN ln -s ${PROJECT}.pck proj.pck 
+
+RUN mkdir ~/.cache \
+    && mkdir -p ~/.config/godot \
+    && mkdir -p ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+
+CMD ["godot","--main-pack","proj.pck"]

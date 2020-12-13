@@ -5,3 +5,5 @@ services:
     ports:
       - "34543:34543/tcp"
       - "34543:34543/udp"
+    volumes:
+      - ""

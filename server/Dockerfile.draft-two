@@ -1,0 +1,29 @@
+# source: https://github.com/vayan/docker-godot/blob/master/Dockerfile
+FROM ubuntu:xenial
+
+ENV GODOT_VERSION "3.2.3"
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    wget \
+    unzip \
+    python \
+    python-openssl \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN wget https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-stable_linux_server.64.zip \
+    && mkdir ~/.cache \
+    && mkdir -p ~/.config/godot \
+    && mkdir -p ~/.local/share/godot/templates/${GODOT_VERSION}.stable \ 
+    && unzip Godot_v${GODOT_VERSION}-stable_linux_server.64.zip \
+    && mv Godot_v${GODOT_VERSION}-stable_linux_server.64 /usr/local/bin/godot \
+    && rm -f Godot_v${GODOT_VERSION}-stable_export_templates.tpz Godot_v${GODOT_VERSION}-stable_linux_server.64.zip
+
+
+WORKDIR /opt/chat-move-server
+
+COPY target/. .
+
+RUN ls -lR
+
+CMD ["godot", "--main-pack", "chat-move-server.pck"]

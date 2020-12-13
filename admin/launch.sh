@@ -6,12 +6,10 @@
 
 set -e
 
-STREAM='stable'
 INSTANCE_NAME='chat-move-server'
 
-# see https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-gcp/
-IMAGE_PROJECT=fedora-coreos-cloud 
-IMAGE_FAMILY=fedora-coreos-stable 
+IMAGE_PROJECT=debian-cloud 
+IMAGE_FAMILY=debian-10
 
 gcloud compute instances create $INSTANCE_NAME \
   --image-family $IMAGE_FAMILY \
